@@ -8,8 +8,30 @@
         <script type="text/javascript" src="./main.js" defer></script>
     </head>
     <body>
-        <main>
-            <h1>test</h1>
+        <main class="wrapper">
+            <h1>Posting Page</h1>
+            <section id="section-form">
+                <form id="comment-form">
+                    <h2>Write your comment</h2>
+                    <div class="fieldset-wrapper">
+                        <fieldset>
+                            <legend>Test legend</legend>
+                            <p class="field">
+                                <label for="comment-title">Title</label>
+                                <input type="text" id="comment-title" name="comment-title" required>
+                            </p>
+                            <p class="field">
+                                <label for="comment-text">Comment</label>
+                                <textarea id="comment-text" name="comment-text" cols="40" rows="10" required></textarea>
+                            </p>
+                        </fieldset>
+                    </div>
+                    <input type="submit" id="comment-submit-btn" value="Comment">
+                </form>
+            </section>
+            <section id="section-display">
+                <h2>Your comments</h2>
+            </section>
         </main>
     </body>
 </html>
