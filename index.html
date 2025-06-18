@@ -8,20 +8,21 @@
         <script type="text/javascript" src="./main.js" defer></script>
     </head>
     <body>
-        <main class="wrapper">
+        <header class="main-wrapper">
             <h1>Posting Page</h1>
+        </header>
+        <main class="main-wrapper">
             <section id="section-form">
                 <form id="comment-form">
-                    <h2>Write your comment</h2>
                     <div class="fieldset-wrapper">
                         <fieldset>
-                            <legend>Test legend</legend>
+                            <legend>Submit your comment</legend>
                             <p class="field">
-                                <label for="comment-title">Title</label>
+                                <label for="comment-title">Title:</label>
                                 <input type="text" id="comment-title" name="comment-title" required>
                             </p>
                             <p class="field">
-                                <label for="comment-text">Comment</label>
+                                <label for="comment-text">Comment:</label>
                                 <textarea id="comment-text" name="comment-text" cols="40" rows="10" required></textarea>
                             </p>
                         </fieldset>
@@ -31,7 +32,17 @@
             </section>
             <section id="section-display">
                 <h2>Your comments</h2>
+                <div class="posts-wrapper">
+                    <div class="post">
+                        <h3 class="post-title">Title test</h3>
+                        <p class="post-text">Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.</p>
+                        <div class="author-info-wrapper">
+                            <p class="author-info">Post by <span class="author-name">Author</span></p>
+                        </div>
+                    </div>
+                </div>
             </section>
         </main>
+        <footer></footer>
     </body>
 </html>
