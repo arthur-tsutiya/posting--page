@@ -4,8 +4,8 @@
 
 :root {
     --font-color: #44444d;
-    /*--bg-color: #eef2ff;*/
-    --bg-color: #eff4fa;
+    --font-color-light: #77777d;
+    --bg-color: #e6f1ff;
     --input-border-color: #bfbfbf;
     --input-border-color-focus: #5298ee;
     --input-border-color-focus-a: #5298ee80;
@@ -16,7 +16,8 @@
     --input-color-3: #2881ec;
     --input-color-a: #18529755;
     --light-grey: #e1e1e1;
-    --dark-grey-a: #65656580;
+    --dark-grey-a: #65656540;
+    --dark-grey-a2: #6565650a;
     --delay: 150ms;
 }
 
@@ -57,7 +58,7 @@ h2 {
 }
 
 .section-title {
-    margin: 0 0 2em 0;
+    margin: 0;
 }
 
 /* SECTION: Comment Form */
@@ -126,7 +127,7 @@ input[type="submit"] {
     background-color: var(--input-color);
     color: #fff;
     cursor: pointer;
-    box-shadow: 0px .125em 0px 0px var(--dark-grey-a);
+    box-shadow: 0px .2em 0px 0px var(--dark-grey-a);
     transition: 150ms all;
 }
 
@@ -151,38 +152,52 @@ input[type="submit"]:active {
     min-width: 15em;
     min-height: 15em;
     max-height: 30em;
-    background-color: #fff;
-    box-shadow: 0px 0px 4px 0px var(--dark-grey-a);
-    padding: 1em;
+
     margin-bottom: 2em;
 
     grid-column: 1 / 2;
+}
+
+/* SECTION: header */
+
+header {
+    height: 100vh;
 }
 
 /* SECTION: comments display area */
 
 .posts-wrapper {
     min-height: 5em;
-    margin: 0 0 3em 0;
+    margin: 2em 0;
+}
+
+.section {
+    border-radius: .25em;
+    box-shadow: 0px 0px 0px 6px var(--dark-grey-a2), 0px 0px 0px 12px var(--dark-grey-a2);
+    padding: 2em;
+    background-color: #fff;
 }
 
 #section-display {
-    background-color: #fff;
-    border-radius: .25em;
-    box-shadow: 0px 0px 4px 0px var(--dark-grey-a);
-    padding: 2em;
-
     grid-column: 2 / 3;
     max-width: 60em;
 }
 
 /*SECTION: comment template*/
 
-.post {
-    min-height: 10em;
-    padding: 1em 2em;
-
+.post-placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-style:italic;
+    color: var(--font-color-light);
 }
+
+.post {
+    min-height: 2em;
+    padding: 1em 2em;
+}
+
 
 .post .author-info-wrapper {
     display: flex;
