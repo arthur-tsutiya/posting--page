@@ -5,6 +5,7 @@
 :root {
     --font-color: #44444d;
     --font-color-light: #77777d;
+    --font-color-a: #44444d30;
     --bg-color: #e6f1ff;
     --input-border-color: #bfbfbf;
     --input-border-color-focus: #5298ee;
@@ -19,6 +20,8 @@
     --dark-grey-a: #65656540;
     --dark-grey-a2: #6565650a;
     --delay: 150ms;
+
+    --padding-page-heading: 1em;
 }
 
 body {
@@ -30,6 +33,7 @@ body {
     background-image: url("./img/bg-large.png");
     background-position: center;
     background-size: cover;
+    background-attachment: fixed;
 }
 
 main {
@@ -73,20 +77,32 @@ h2 {
 header {
     display: flex;
     align-items: center;
+    justify-content: center;
     padding: 1em 0;
     width: 100%;
+/*
+    background-color: rgb(186, 212, 247);
+    background-image: url("./img/bg-large.png");
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+    */
 }
 
 .page-heading {
-    margin-inline: 1em;
+    padding-inline: var(--padding-page-heading);
+    font-size: 1.3125em;
 }
 
 .header-wrapper {
     display: flex;
     align-items: center;
     flex-direction: row;
+    /*justify-content: space-between;*/
     padding: 0 1em;
+
     width: 100%;
+    max-width: 100em;
 }
 
 .btn {
@@ -96,7 +112,7 @@ header {
 
 .btn-rounded {
     border-radius: .5em;
-    padding: 1.25em .75em;
+    padding: .75em;
 }
 
 .btn-transparent {
@@ -113,6 +129,20 @@ header {
 
 .btn-search {
     margin-left: auto;
+}
+/*
+.btn-hamburger {
+    margin-right: var(--padding-page-heading);
+}
+*/
+.btn-icon,
+.btn-icon svg {
+    width: 20px;
+    height: 20px;
+}
+
+.btn-icon svg {
+    fill: var(--font-color);
 }
 
 /* SECTION: Comment Form */
