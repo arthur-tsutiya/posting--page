@@ -10,7 +10,7 @@
     --input-border-color: #bfbfbf;
     --input-border-color-focus: #5298ee;
     --input-border-color-focus-a: #5298ee80;
-    --input-border-color-error: #f52929;
+    --input-border-color-error: #ee7676;
     --input-border-color-error-a: #f5292980;
     --input-color: #185297;
     --input-color-2: #216cc7;
@@ -285,6 +285,9 @@ input[type="submit"]:active {
 .posts-wrapper {
     min-height: 5em;
     margin: 2em 0;
+
+    display: grid;
+    grid-template-columns: 1fr;
 }
 
 .section {
@@ -312,6 +315,9 @@ input[type="submit"]:active {
 .post {
     min-height: 2em;
     padding: 1em;
+
+    opacity: 1;
+    transition: opacity 1s;
 }
 
 .post .author-info-wrapper {
@@ -346,6 +352,10 @@ input[type="submit"]:active {
     border-radius: .25em;
     background-color: var(--input-border-color-focus);
     flex: 0 0 auto;
+}
+
+.collapsed {
+    opacity: 0;
 }
 
 @media (min-width: 25em) {
