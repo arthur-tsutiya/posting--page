@@ -3,17 +3,6 @@ const commentTitle = document.querySelector("#comment-title");
 const commentText = document.querySelector("#comment-text");
 const postsWrapper = document.querySelector(".posts-wrapper");
 
-/*
-const postObserver = new MutationObserver((records, observerRef) => {
-    for (let record of records) {
-        for (let addedNode of record.addedNodes) {
-            addedNode.classList.remove("collapsed");
-        }
-    }
-});
-*/
-/*postObserver.observe(postsWrapper, {childList: true});*/
-
 commentForm.addEventListener("submit", e => {
     e.preventDefault();
 
@@ -21,7 +10,8 @@ commentForm.addEventListener("submit", e => {
 
     if (comment){
         postComment(postsWrapper, comment);
-        setTimeout(() => triggerCommentTransition(postsWrapper), 50);
+        setTimeout(() => requestAnimationFrame(() => triggerCommentTransition(postsWrapper)), 50
+    );
     }
 });
 
@@ -33,11 +23,13 @@ function createComment(titleInput, textInput) {
     let author = "Author";
 
     const commentTemplate = `<div class="post collapsed">
-        <h3 class="post-title">${title}</h3>
-        <p class="post-text">${text}</p>
-        <div class="author-info-wrapper">
-            <p class="author-info">Post by <span class="author-name">${author}</span></p>
-            <img class="author-img">
+        <div class="post-content">
+            <h3 class="post-title">${title}</h3>
+            <p class="post-text">${text}</p>
+            <div class="author-info-wrapper">
+                <p class="author-info">Post by <span class="author-name">${author}</span></p>
+                <img class="author-img">
+            </div>
         </div>
     </div>`;
 
@@ -53,4 +45,5 @@ function postComment(postsWrapper, commentHTML) {
 function triggerCommentTransition(postsWrapper) {
     const lastComment = postsWrapper.children[postsWrapper.children.length - 1];
     lastComment.classList.remove("collapsed");
+    /*debugger;*/
 }

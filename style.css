@@ -95,7 +95,7 @@ header {
     font-size: 1.3125em;
 }
 
-.header-wrapper {
+.header-inner {
     display: flex;
     align-items: center;
     flex-direction: row;
@@ -313,11 +313,18 @@ input[type="submit"]:active {
 }
 
 .post {
-    min-height: 2em;
-    padding: 1em;
+    /*min-height: 2em;*/
+    padding-block: 1.5em;
+    padding-inline: 1em;
 
+    display: grid;
+    grid-template-rows: 1fr;
     opacity: 1;
-    transition: opacity 1s;
+    transition: opacity 1s, padding-block .5s, grid-template-rows .5s;
+}
+
+.post-content {
+    overflow: hidden;
 }
 
 .post .author-info-wrapper {
@@ -337,7 +344,7 @@ input[type="submit"]:active {
 .post-text {
     margin: 0;
     padding: 1em 0;
-    min-height: 6em;
+    min-height: 5em;
 }
 
 .author-info {
@@ -356,6 +363,9 @@ input[type="submit"]:active {
 
 .collapsed {
     opacity: 0;
+    grid-template-rows: 0fr;
+    padding-block: 0em;
+    /*min-height: 0;*/
 }
 
 @media (min-width: 25em) {
