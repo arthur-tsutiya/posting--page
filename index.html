@@ -39,10 +39,10 @@
                 <div class="page-info-text">
                     <h2 class="page-info-title"> What is this page about? </h2>
                     <p>This page showcases a simple comment/post system. It communicates with the open API from <a target="_blank" href="https://jsonplaceholder.typicode.com/">jsonplaceholder</a>.</p>
-                    <p>To test the page's functionality, just write a title and a comment in the "Write a post" section and press the "Submit Post" button. Your post should appear after a small delay.</p>
+                    <p>To test the page's functionality, just write a title and a comment in the "Write a post" section and press the "Submit Post" button. Your post should appear after a short delay.</p>
                 </div>
-                </section>
-            <section id="section-display" class="section">
+            </section>
+            <section id="section-display" class="section" aria-live="assertive" aria-atomic="true">
                 <h2 class="section-title">Your posts</h2>
                 <div class="posts-wrapper">
                     <div id="post-placeholder" class=" post">No posts yet.</div>
@@ -67,6 +67,5 @@
                 </form>
             </section>
         </main>
-        <footer></footer>
     </body>
 </html>
