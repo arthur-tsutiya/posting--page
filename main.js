@@ -34,27 +34,14 @@ function sendPost(titleInput, textInput) {
         headers
     }).then(response => response.json())
     .then(inData => {
-        console.log(inData);
-        postComment(postsWrapper, createComment(inData));
+        postComment(postsWrapper, createPostHTML(inData));
         stopPostAnimation(submitBtn);
         resetInputs(commentTitle, commentText);
         setTimeout(() => requestAnimationFrame(() => triggerCommentTransition(postsWrapper)), 40);
     });
-    
-
-    /*DEBUGGING*/
-    /*
-    setTimeout(() => {
-        console.log(data);
-        postComment(postsWrapper, createComment(data));
-        stopPostAnimation(submitBtn);
-        resetInputs(commentTitle, commentText);
-        setTimeout(() => requestAnimationFrame(() => triggerCommentTransition(postsWrapper)), 40);
-    }, 500);
-    */
 }
 
-function createComment(data) {
+function createPostHTML(data) {
 
     let title = data.title || "No title provided";
     let text = data.body ||  "No comment provided";
@@ -62,33 +49,35 @@ function createComment(data) {
     let userId = data.userId || 1;
     let author = "Author";
 
-    const commentTemplate = `<div class="post collapsed">
+    const postTemplate = `<div class="post collapsed">
         <div class="post-content">
             <h3 class="post-title">${title}</h3>
             <p class="post-text">${text}</p>
             <div class="author-info-wrapper">
                 <p class="author-info">Post by <span class="author-name">${author}</span></p>
-                <img class="author-img">
+                <img class="author-img circular" src="./img/profile-placeholder-60px.png" alt="Placeholder profile picture">
             </div>
         </div>
     </div>`;
 
-    return commentTemplate;
+    return postTemplate;
 }
 
-function postComment(postsWrapper, commentHTML) {
+function postComment(postsWrapper, postHTML) {
     if (!postsWrapper) return;
 
-    const commentPlaceholder = postsWrapper.querySelector("#post-placeholder");
+    const postPlaceholder = postsWrapper.querySelector("#post-placeholder");
 
-    if (commentPlaceholder) {
-        commentPlaceholder.remove();
+    if (postPlaceholder) {
+        postPlaceholder.remove();
     }
 
-    postsWrapper.insertAdjacentHTML("beforeend", commentHTML);
+    postsWrapper.insertAdjacentHTML("beforeend", postHTML);
 }
 
 function triggerCommentTransition(postsWrapper) {
+    if(!postsWrapper) return;
+
     const lastComment = postsWrapper.children[postsWrapper.children.length - 1];
     lastComment.classList.remove("collapsed");
 }
@@ -111,10 +100,10 @@ function resetInputs(titleInput, textInput) {
     if (!(titleInput && textInput)) return;
 
     titleInput.value = "";
-    textInput.value ="";
+    textInput.value = "";
 }
 
-function leadingDebouncer(func, timeout) {
+function leadingDebouncer(func, timeout = 200) {
     let timer;
 
     return (...args) => {
