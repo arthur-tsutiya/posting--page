@@ -4,11 +4,15 @@ const commentText = document.querySelector("#comment-text");
 const submitBtn = document.querySelector("#comment-submit-btn");
 const postsWrapper = document.querySelector(".posts-wrapper");
 
+const formSubmitHandler = leadingDebouncer(() => {
+    beginPostAnimation(submitBtn);
+    sendPost(commentTitle, commentText);
+}, 100);
+
 commentForm.addEventListener("submit", e => {
     e.preventDefault();
 
-    beginPostAnimation(submitBtn);
-    sendPost(commentTitle, commentText);
+    formSubmitHandler();
 });
 
 function sendPost(titleInput, textInput) {
@@ -24,7 +28,6 @@ function sendPost(titleInput, textInput) {
         userId: 1
     }
 
-    /*
     fetch(url, {
         method,
         body: JSON.stringify(data),
@@ -34,11 +37,13 @@ function sendPost(titleInput, textInput) {
         console.log(inData);
         postComment(postsWrapper, createComment(inData));
         stopPostAnimation(submitBtn);
+        resetInputs(commentTitle, commentText);
         setTimeout(() => requestAnimationFrame(() => triggerCommentTransition(postsWrapper)), 40);
     });
-    */
+    
 
     /*DEBUGGING*/
+    /*
     setTimeout(() => {
         console.log(data);
         postComment(postsWrapper, createComment(data));
@@ -46,6 +51,7 @@ function sendPost(titleInput, textInput) {
         resetInputs(commentTitle, commentText);
         setTimeout(() => requestAnimationFrame(() => triggerCommentTransition(postsWrapper)), 40);
     }, 500);
+    */
 }
 
 function createComment(data) {
@@ -106,4 +112,19 @@ function resetInputs(titleInput, textInput) {
 
     titleInput.value = "";
     textInput.value ="";
+}
+
+function leadingDebouncer(func, timeout) {
+    let timer;
+
+    return (...args) => {
+        if (!timer) {
+            func.apply(this, args);
+        }
+        clearTimeout(timer);
+
+        timer = setTimeout(() => {
+            timer = undefined;
+        }, timeout);
+    }
 }
