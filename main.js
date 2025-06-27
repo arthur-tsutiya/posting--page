@@ -73,6 +73,12 @@ function createComment(data) {
 function postComment(postsWrapper, commentHTML) {
     if (!postsWrapper) return;
 
+    const commentPlaceholder = postsWrapper.querySelector("#post-placeholder");
+
+    if (commentPlaceholder) {
+        commentPlaceholder.remove();
+    }
+
     postsWrapper.insertAdjacentHTML("beforeend", commentHTML);
 }
 
