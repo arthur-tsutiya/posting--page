@@ -3,66 +3,64 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title> Posting Page </title>
+        <title>Posting Page</title>
         <link rel="stylesheet" href="./style.css">
         <script type="text/javascript" src="./main.js" defer></script>
     </head>
     <body>
         <header>
-            <div class="header-inner">
-                <button class="btn btn-rounded btn-transparent btn-hamburger">
-                    <div class="btn-icon">
-                        <svg viewBox="0 0 42 37" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M 3.3243449,0 C 1.4825527,0 0,1.4825527 0,3.3243449 0,5.166138 1.4825527,6.6492065 3.3243449,6.6492065 H 39.340234 c 1.841793,0 3.324862,-1.4830685 3.324862,-3.3248616 C 42.665096,1.4825527 41.182027,0 39.340234,0 Z m 0,15.39906 C 1.4825527,15.39906 0,16.881612 0,18.723405 c 0,1.841792 1.4825527,3.324862 3.3243449,3.324862 H 39.340234 c 1.841793,0 3.324862,-1.48307 3.324862,-3.324862 0,-1.841793 -1.483069,-3.324345 -3.324862,-3.324345 z m 0,15.39906 C 1.4825527,30.79812 0,32.28119 0,34.122982 c 0,1.841792 1.4825527,3.324345 3.3243449,3.324345 H 39.340234 c 1.841793,0 3.324862,-1.482553 3.324862,-3.324345 0,-1.841792 -1.483069,-3.324862 -3.324862,-3.324862 z">
-                            </path>
-                        </svg>
-                    </div>
-                </button>
-                <h1 class="page-heading">
-                    <a class="page-heading-link" href="#">
-                        Posting Page
-                    </a>
-                </h1>
-                <button class="btn btn-rounded btn-transparent btn-search">
-                    <div class="btn-icon">
-                        <svg class="search-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 720 720">
-                            <path d="M 664,-240 412,-492 q -30,24 -69,38 -39,14 -83,14 -109,0 -184.5,-75.5 Q 0,-591 0,-700 0,-809 75.5,-884.5 151,-960 260,-960 q 109,0 184.5,75.5 75.5,75.5 75.5,184.5 0,44 -14,83 -14,39 -38,69 l 252,252 z M 260,-520 q 75,0 127.5,-52.5 Q 440,-625 440,-700 440,-775 387.5,-827.5 335,-880 260,-880 185,-880 132.5,-827.5 80,-775 80,-700 q 0,75 52.5,127.5 Q 185,-520 260,-520 Z">
-                            </path>
-                        </svg>
-                    </div>
-                </button>
-            </div>
+            <button class="btn btn-rounded btn-transparent">
+                <div class="btn-icon">
+                    <svg viewBox="0 0 42 37" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M 3.3243449,0 C 1.4825527,0 0,1.4825527 0,3.3243449 0,5.166138 1.4825527,6.6492065 3.3243449,6.6492065 H 39.340234 c 1.841793,0 3.324862,-1.4830685 3.324862,-3.3248616 C 42.665096,1.4825527 41.182027,0 39.340234,0 Z m 0,15.39906 C 1.4825527,15.39906 0,16.881612 0,18.723405 c 0,1.841792 1.4825527,3.324862 3.3243449,3.324862 H 39.340234 c 1.841793,0 3.324862,-1.48307 3.324862,-3.324862 0,-1.841793 -1.483069,-3.324345 -3.324862,-3.324345 z m 0,15.39906 C 1.4825527,30.79812 0,32.28119 0,34.122982 c 0,1.841792 1.4825527,3.324345 3.3243449,3.324345 H 39.340234 c 1.841793,0 3.324862,-1.482553 3.324862,-3.324345 0,-1.841792 -1.483069,-3.324862 -3.324862,-3.324862 z">
+                        </path>
+                    </svg>
+                </div>
+            </button>
+            <h1 class="page-heading">
+                <a class="page-heading-link" href="./index.html">
+                    Posting Page
+                </a>
+            </h1>
+            <button id="btn-search" class="btn btn-rounded btn-transparent">
+                <div class="btn-icon">
+                    <svg class="search-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 720 720">
+                        <path d="M 664,-240 412,-492 q -30,24 -69,38 -39,14 -83,14 -109,0 -184.5,-75.5 Q 0,-591 0,-700 0,-809 75.5,-884.5 151,-960 260,-960 q 109,0 184.5,75.5 75.5,75.5 75.5,184.5 0,44 -14,83 -14,39 -38,69 l 252,252 z M 260,-520 q 75,0 127.5,-52.5 Q 440,-625 440,-700 440,-775 387.5,-827.5 335,-880 260,-880 185,-880 132.5,-827.5 80,-775 80,-700 q 0,75 52.5,127.5 Q 185,-520 260,-520 Z">
+                        </path>
+                    </svg>
+                </div>
+            </button>
         </header>
-        <main class="wrapper">
+        <main class="main-wrapper">
             <section id="page-info" class="section">
                 <img class="page-info-img circular" alt="Placeholder profile picture" src="./img/profile-placeholder-240px.png">
                 <div class="page-info-text">
-                    <h2 class="page-info-title"> What is this page about? </h2>
+                    <h2 class="page-info-title">What is this page about?</h2>
                     <p>This page showcases a simple comment/post system. It communicates with the open API from <a target="_blank" href="https://jsonplaceholder.typicode.com/">jsonplaceholder</a>.</p>
                     <p>To test the page's functionality, just write a title and a comment in the "Write a post" section and press the "Submit Post" button. Your post should appear after a short delay.</p>
                 </div>
             </section>
-            <section id="section-display" class="section" aria-live="assertive" aria-atomic="true">
+            <section id="page-posts-area" class="section" aria-live="assertive" aria-atomic="true">
                 <h2 class="section-title">Your posts</h2>
-                <div class="posts-wrapper">
-                    <div id="post-placeholder" class=" post">No posts yet.</div>
+                <div id="posts-wrapper">
+                    <div id="post-placeholder" class="post">No posts yet.</div>
                 </div>
-                <form id="comment-form">
+                <form id="post-form">
                     <div class="fieldset-wrapper">
                         <fieldset>
                             <legend>Write a post</legend>
                             <p class="field">
-                                <label for="comment-title">Title:</label>
-                                <input type="text" id="comment-title" name="comment-title" required>
+                                <label for="input-title">Title:</label>
+                                <input type="text" id="input-title" name="input-title" required>
                             </p>
                             <p class="field">
-                                <label for="comment-text">Comment:</label>
-                                <textarea id="comment-text" name="comment-text" cols="40" rows="10" required></textarea>
+                                <label for="input-text">Comment:</label>
+                                <textarea id="input-text" name="input-text" cols="40" rows="10" required></textarea>
                             </p>
                         </fieldset>
                     </div>
                     <div class="submit-btn-wrapper field">
-                        <input type="submit" id="comment-submit-btn" value="Submit Post">
+                        <input class="btn" type="submit" id="submit-btn" value="Submit Post">
                     </div>
                 </form>
             </section>

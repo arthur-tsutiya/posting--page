@@ -1,22 +1,22 @@
-const commentForm = document.querySelector("#comment-form");
-const commentTitle = document.querySelector("#comment-title");
-const commentText = document.querySelector("#comment-text");
-const submitBtn = document.querySelector("#comment-submit-btn");
-const postsWrapper = document.querySelector(".posts-wrapper");
+const postForm = document.querySelector("#post-form");
+const inputTitle = document.querySelector("#input-title");
+const inputText = document.querySelector("#input-text");
+const submitBtn = document.querySelector("#submit-btn");
+const postsWrapper = document.querySelector("#posts-wrapper");
 
-const formSubmitHandler = leadingDebouncer(() => {
+const formSubmitHandler = leadingDebounce(() => {
     beginPostAnimation(submitBtn);
-    sendPost(commentTitle, commentText);
+    sendPost(inputTitle, inputText);
 }, 100);
 
-commentForm.addEventListener("submit", e => {
+postForm.addEventListener("submit", e => {
     e.preventDefault();
 
     formSubmitHandler();
 });
 
 function sendPost(titleInput, textInput) {
-    if (!(titleInput && textInput)) return;
+    if (!(titleInput && textInput)) throw new Error("Undefined/null argument(s) to sendPost()");
 
     const url = 'https://jsonplaceholder.typicode.com/posts';
     const method = 'POST';
@@ -36,8 +36,10 @@ function sendPost(titleInput, textInput) {
     .then(inData => {
         postComment(postsWrapper, createPostHTML(inData));
         stopPostAnimation(submitBtn);
-        resetInputs(commentTitle, commentText);
-        setTimeout(() => requestAnimationFrame(() => triggerCommentTransition(postsWrapper)), 40);
+        resetInputs(inputTitle, inputText);
+
+        /* Necessary to trigger each post's transition from collapsed to visible as they are added to the DOM */
+        setTimeout(() => requestAnimationFrame(() => triggerCommentTransition(postsWrapper)), 30);
     });
 }
 
@@ -45,8 +47,8 @@ function createPostHTML(data) {
 
     let title = data.title || "No title provided";
     let text = data.body ||  "No comment provided";
-    let id = data.id || 0;
-    let userId = data.userId || 1;
+    let id = data.id || -1;
+    let userId = data.userId || -1;
     let author = "Author";
 
     const postTemplate = `<div class="post collapsed">
@@ -64,7 +66,6 @@ function createPostHTML(data) {
 }
 
 function postComment(postsWrapper, postHTML) {
-    if (!postsWrapper) return;
 
     const postPlaceholder = postsWrapper.querySelector("#post-placeholder");
 
@@ -76,34 +77,26 @@ function postComment(postsWrapper, postHTML) {
 }
 
 function triggerCommentTransition(postsWrapper) {
-    if(!postsWrapper) return;
-
     const lastComment = postsWrapper.children[postsWrapper.children.length - 1];
     lastComment.classList.remove("collapsed");
 }
 
 function beginPostAnimation(submitButton) {
-    if (!submitButton) return;
-
     submitButton.value = "Posting...";
     submitButton.setAttribute("disabled", "");
 }
 
 function stopPostAnimation(submitButton) {
-    if (!submitButton) return;
-
     submitButton.value = "Submit Post";
     submitButton.removeAttribute("disabled");
 }
 
 function resetInputs(titleInput, textInput) {
-    if (!(titleInput && textInput)) return;
-
     titleInput.value = "";
     textInput.value = "";
 }
 
-function leadingDebouncer(func, timeout = 200) {
+function leadingDebounce(func, timeout = 200) {
     let timer;
 
     return (...args) => {
