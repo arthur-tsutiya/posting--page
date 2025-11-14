@@ -32,7 +32,8 @@ function sendPost(titleInput, textInput) {
         method,
         body: JSON.stringify(data),
         headers
-    }).then(response => response.json())
+    })
+    .then(response => response.json())
     .then(inData => {
         postComment(postsWrapper, createPostHTML(inData));
         stopPostAnimation(submitBtn);
@@ -40,7 +41,8 @@ function sendPost(titleInput, textInput) {
 
         /* Necessary to trigger each post's transition from collapsed to visible as they are added to the DOM */
         setTimeout(() => requestAnimationFrame(() => triggerCommentTransition(postsWrapper)), 30);
-    });
+    })
+    .catch(error => console.log(error));
 }
 
 function createPostHTML(data) {
